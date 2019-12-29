@@ -1,8 +1,9 @@
 package com.mercury;
 
 public class Calculations {
-    public static double main(double x, double y, char operator){
-        double result = 0.0;
+    public static double main(String input){
+        char operator = '+';
+        double x = 0.0, y = 0.0, result = 0.0;
         switch(operator){
             case '+' : result = Calculations.addition(x,y);
                 break;
@@ -18,26 +19,22 @@ public class Calculations {
     }
 
     public static double addition(double x, double y){
-        double result = x + y;
 
-        return result;
+        return x + y;
     }
 
     public static double division(double x, double y){
-        double result = x / y;
 
-        return result;
+        return x / y;
     }
 
     public static double multiplication(double x, double y){
-        double result = x * y;
 
-        return result;
+        return x * y;
     }
 
     public static double substraction(double x, double y){
-        double result = x - y;
 
-        return result;
+        return x - y;
     }
 }

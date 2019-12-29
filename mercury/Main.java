@@ -8,7 +8,7 @@ public class Main {
 
     public static void main(String[] args) {
         /* creating a canvas on which the calculator can be shown */
-        Graphics.main();
+        Graphics newScreen = new Graphics();
 
         /* After the graphics class is called and constructed it */
     }
