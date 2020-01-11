@@ -1,14 +1,23 @@
 package com.mercury;
 
 import java.awt.*;
+import javax.swing.*;
 
-public class Graphics extends Frame{
-    Graphics(){
+public class Graphics extends JFrame{
+    Graphics() throws ClassNotFoundException, UnsupportedLookAndFeelException, InstantiationException, IllegalAccessException {
+
+        try{
+            UIManager.setLookAndFeel( UIManager.getSystemLookAndFeelClassName() );
+        } catch (Exception e){
+            e.printStackTrace();
+        }
+
         /* frame settings */
         setTitle("Calculator");
         setSize(500, 500);
         setLayout(null);        //no layout manager
         setVisible(true);       //now frame will be visible, by default not visible
+        setDefaultCloseOperation(DISPOSE_ON_CLOSE);
 
         /* Constructor for class will be used to create all needed components */
         /* First all components to be placed on the frame will be created */
@@ -16,7 +25,7 @@ public class Graphics extends Frame{
         TextField display = new TextField();
 
         // This means all numeric and operator buttons with their ActionListeners
-        // operator buttons
+        // creating operator buttons operator buttons
         char[] operators = new char[]{'/', '*', '-', '+', '='};
         Button[] operatorButtons = new Button[operators.length];
 
@@ -25,6 +34,7 @@ public class Graphics extends Frame{
             operatorButtons[i] = new Button(label);
 
             // This actionlistener enables each button to add a symbol to the screen
+            // TO-DO move the lambda expression to its own method and call it from there
             operatorButtons[i].addActionListener(e -> {
                 String input = e.getActionCommand();
                 String onScreen = display.getText();
@@ -46,7 +56,8 @@ public class Graphics extends Frame{
             });
         }
 
-        // numeric buttons
+        // creating numeric buttons
+        // TO-DO moving the creation of numeric buttons to a different method
         String numLabel;
         Integer buttonCount;
         Button[] numButtons = new Button[10];
@@ -63,11 +74,12 @@ public class Graphics extends Frame{
             });
         }
 
-        /* ELEMENT PLACEMENT */
-        /* initializing element placements variables */
+        // ELEMENT PLACEMENT
+        // TO-DO replace this "manual" placement with a grid
+        // initializing element placements variables */
         int buttonXCoordinate = 30, buttonYCoordinate = 100, buttonWidth = 80, buttonHeight = 30;
 
-        /* add all fields to frame*/
+        // add all fields to frame*/
         add(display);
         display.setBounds(buttonXCoordinate, buttonYCoordinate, 3*(buttonWidth), buttonHeight);
 
